@@ -2,7 +2,7 @@
 
 int main(){
 
-    printf("Fluzao eh campeao\n");
+    printf("Mengao eh campeao\n");
 
     return 0;
 }
