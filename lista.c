@@ -34,6 +34,14 @@ struct musica
 }
 */
 
+/*
+FUNCOES CONSIDERAVEIS:
+
+insereMusicaNaPlaylist(tLista *playlist, tMusica *musica);
+inserePessoaNaLista(tLista *lista, tPessoa *p);
+inserePlaylistNasPlaylists(tPlaylist **playlists, tPlaylist *playlist);
+*/
+
 //Buscar pessoa pelo nome
 //Buscar Playlist pelo nome
 //Busca Musica na Playlist
