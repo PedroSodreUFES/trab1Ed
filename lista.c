@@ -1,7 +1,7 @@
 #include "lista.h"
 
 struct celula{ //celula da lista de amigos
-    tTipoLista* Proximos;
+    tTipoLista* Amigos;
     tTipoLista** Playlists;
     tCelula* prox;
 };
