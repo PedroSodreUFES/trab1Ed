@@ -1,6 +1,7 @@
 #include "lista.h"
 
 struct celula{ //celula da lista de amigos
+    char* nome;
     tTipoLista* Amigos;
     tTipoLista** Playlists;
     tCelula* prox;
@@ -10,6 +11,12 @@ struct lista{
     tCelula* primeiro;
     tCelula* ultimo;
 };
+
+//Buscar pessoa pelo nome
+//Buscar Playlist pelo nome
+//Busca Musica na Playlist
+
+//
 
 tCelula* liberaCelula(tCelula* cel){
 
