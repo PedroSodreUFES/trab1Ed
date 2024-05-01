@@ -10,63 +10,25 @@ struct lista{
     tCelula* ultimo;
 };
 
-/*
-struct Pessoa{
-    tLista *listademaigos;    
-    tPlaylist **playlists;
-    int nplaylists;
-    char nomepessoa[30];
-}
-*/
-
-/*
-struct playlist
-{
-    tLista *musicas;
-    char nomedaplaylist[50];
-}
-*/
-
-/*
-struct musica
-{
-    char nomedamusica[40], nomedoartista[40];
-}
-*/
-
-/*
-FUNCOES CONSIDERAVEIS:
-
-insereMusicaNaPlaylist(tLista *playlist, tMusica *musica);
-inserePessoaNaLista(tLista *lista, tPessoa *p);
-inserePlaylistNasPlaylists(tPlaylist **playlists, tPlaylist *playlist);
-*/
-
-//Buscar pessoa pelo nome
-//Buscar Playlist pelo nome
-//Busca Musica na Playlist
-
-//
-
 tCelula* liberaCelula(tCelula* cel){
 
     tCelula* prox = cel->prox;
-    liberaProduto(cel->produto);
+    liberaPessoa(cel->conteudo);
     free(cel);
 
     return prox;
 }
 
-tTipoLista* inicializaLista(){
-    tTipoLista* lista = malloc(sizeof(tTipoLista));
+tLista* inicializaLista(){
+    tLista* lista = malloc(sizeof(tLista));
+
     lista->primeiro = NULL;
     lista->ultimo = NULL;
 
     return lista;
 }
 
-void insereCelulaNaLista(tProduto* produto, tTipoLista* lista){
-
+void inserePessoaNaLista(tLista* lista, tPessoa* pessoa){
     tCelula* novo = malloc(sizeof(tCelula));
 
     if(lista->ultimo == NULL){
@@ -76,54 +38,35 @@ void insereCelulaNaLista(tProduto* produto, tTipoLista* lista){
         lista->ultimo = lista->ultimo->prox;
     }
 
-    lista->ultimo->produto = produto;
+    lista->ultimo->conteudo = pessoa;
     lista->ultimo->prox = NULL;
 }
 
-void retiraItem(tTipoLista* lista, int preco){
-    tCelula* ant = NULL;
-    tCelula* p = lista->primeiro;
+void insereMusicaNaPlaylist(tLista* playlist, tMusica* musica){
+    tCelula* novo = malloc(sizeof(tCelula));
 
-    while(p != NULL && retornaPreco(p->produto) != preco){
-        ant = p;
-        p = p->prox;
-    }
-
-    if(p == NULL) return;
-
-    if(p == lista->primeiro && p == lista->ultimo){
-        lista->primeiro = lista->ultimo = NULL;
-        liberaCelula(p);
-        return; 
-    }
-
-    if(p == lista->ultimo){
-        lista->ultimo = ant; 
-        ant->prox = NULL; 
-        liberaCelula(p);
-        return;
-    }
-
-    if(p == lista->primeiro){
-        lista->primeiro = p->prox;    
+    if(playlist->ultimo == NULL){
+        playlist->primeiro = playlist->ultimo = novo;
     } else{
-        ant->prox = p->prox;
-    } 
-
-    liberaCelula(p);
-}
-
-void imprimeLista(tTipoLista* lista){
-    tCelula* aux;
-    aux = lista->primeiro;
-
-    while(aux != NULL){
-        printf("Nome: %s, preco: %d e codigo: %d\n", retornaNome(aux->produto), retornaPreco(aux->produto), retornaCodigo(aux->produto));
-        aux = aux->prox;
+        playlist->ultimo->prox = novo;
+        playlist->ultimo = playlist->ultimo->prox;
     }
+
+    playlist->ultimo->conteudo = musica;
+    playlist->ultimo->prox = NULL;
 }
 
-void liberaLista(tTipoLista* lista){
+// void imprimeLista(tLista* lista){
+//     tCelula* aux;
+//     aux = lista->primeiro;
+
+//     while(aux != NULL){
+//         printf("Nome: %s, preco: %d e codigo: %d\n", retornaNome(aux->produto), retornaPreco(aux->produto), retornaCodigo(aux->produto));
+//         aux = aux->prox;
+//     }
+// }
+
+void liberaLista(tLista* lista){
     tCelula *cel = lista->primeiro;
 
     while(cel != NULL){

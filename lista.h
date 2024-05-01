@@ -1,21 +1,21 @@
 #ifndef lista_h
 #define lista_h
 
-#include "produto.h"
+#include "musica.h"
+#include "playlist.h"
+#include "pessoa.h"
 
 typedef struct celula tCelula;
-typedef struct lista tTipoLista;
+typedef struct lista tLista;
 
 tCelula* liberaCelula(tCelula* cel);
 
-tTipoLista* inicializaLista();
+tLista* inicializaLista();
 
-void insereCelulaNaLista(tProduto* produto, tTipoLista* lista);
+void inserePessoaNaLista(tLista* lista, tPessoa* pessoa);
 
-void retiraItem(tTipoLista* lista, int v);
+void insereMusicaNaPlaylist(tLista* playlist, tMusica* musica);
 
-void imprimeLista(tTipoLista* lista);
-
-void liberaLista(tTipoLista* lista);
+void liberaLista(tLista* lista);
 
 #endif
