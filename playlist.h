@@ -1,15 +1,15 @@
 #ifndef playlist_h
 #define playlist_h
 
-#include "lista.h"
-
 typedef struct playlist tPlaylist;
+
+#include "lista.h"
 
 tPlaylist* inicializaPlaylist(tLista* listaMusicas, char* nome);
 
 tLista* retornaListaMusicas(tPlaylist* playlist);
 
-char* retornaNome(tPlaylist* playlist);
+char* retornaNomePlaylist(tPlaylist* playlist);
 
 void liberaPlaylist(tPlaylist* playlist);
 

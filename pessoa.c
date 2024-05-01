@@ -26,7 +26,7 @@ tPessoa* inicializaPessoa(char* nome, int numPlaylists, tLista* amigos, tPlaylis
     return pessoa;
 }
 
-char* retornaNome(tPessoa* pessoa){
+char* retornaNomePessoa(tPessoa* pessoa){
     return pessoa->nomePessoa;
 }
 
@@ -34,7 +34,7 @@ int retornaNumPlaylists(tPessoa* pessoa){
     return pessoa->numPlaylists;
 }
 
-tPessoa* retornaListaAmigos(tPessoa* pessoa){
+tLista* retornaListaAmigos(tPessoa* pessoa){
     return pessoa->amigos;
 }
 

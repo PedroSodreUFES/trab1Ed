@@ -1,19 +1,20 @@
 #ifndef pessoa_h
 #define pessoa_h
 
-#include "lista.h"
-
 typedef struct pessoa tPessoa;
+
+#include "lista.h"
+#include "playlist.h"
 
 void inserePlaylist(tPessoa* pessoa, tPlaylist* playlist);
 
 tPessoa* inicializaPessoa(char* nome, int numPlaylists, tLista* amigos, tPlaylist** playlists);
 
-char* retornaNome(tPessoa* pessoa);
+char* retornaNomePessoa(tPessoa* pessoa);
 
 int retornaNumPlaylists(tPessoa* pessoa);
 
-tPessoa* retornaListaAmigos(tPessoa* pessoa);
+tLista* retornaListaAmigos(tPessoa* pessoa);
 
 tPlaylist** retornaVetorPlaylists(tPessoa* pessoa);
 

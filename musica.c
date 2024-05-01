@@ -16,7 +16,7 @@ tMusica* inicializaMusica(char* nome, char* artista){
     return musica;
 }
 
-char* retornaNome(tMusica* musica){
+char* retornaNomeMusica(tMusica* musica){
     return musica->nomeMusica;
 }
 

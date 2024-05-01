@@ -1,15 +1,15 @@
 #ifndef musica_h
 #define musica_h
 
+typedef struct musica tMusica;
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct musica tMusica;
-
 tMusica* inicializaMusica(char* nome, char* artista);
 
-char* retornaNome(tMusica* musica);
+char* retornaNomeMusica(tMusica* musica);
 
 char* retornaArtista(tMusica* musica);
 

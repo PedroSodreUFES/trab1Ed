@@ -21,7 +21,7 @@ tLista* retornaListaMusicas(tPlaylist* playlist){
     return playlist->musicas;
 }
 
-char* retornaNome(tPlaylist* playlist){
+char* retornaNomePlaylist(tPlaylist* playlist){
     return playlist->nomedaplaylist;
 }
 
