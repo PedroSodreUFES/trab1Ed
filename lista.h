@@ -16,6 +16,10 @@ void inserePessoaNaLista(tLista* lista, tPessoa* pessoa);
 
 void insereMusicaNaPlaylist(tLista* playlist, tMusica* musica);
 
+tPessoa* buscaPessoa(tLista* lista, char* nome);
+
+tMusica* buscaMusica(tLista* lista, char* nome);
+
 void liberaLista(tLista* lista);
 
 #endif

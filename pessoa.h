@@ -4,9 +4,10 @@
 typedef struct pessoa tPessoa;
 
 #include "lista.h"
-#include "playlist.h"
 
 void inserePlaylist(tPessoa* pessoa, tPlaylist* playlist);
+
+tPlaylist* buscaPlaylist(tPessoa* pessoa, char* nome);
 
 tPessoa* inicializaPessoa(char* nome, int numPlaylists, tLista* amigos, tPlaylist** playlists);
 

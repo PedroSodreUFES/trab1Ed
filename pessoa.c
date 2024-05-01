@@ -13,6 +13,13 @@ void inserePlaylist(tPessoa* pessoa, tPlaylist* playlist){
     pessoa->playlists[pessoa->numPlaylists - 1] = playlist;
 }
 
+tPlaylist* buscaPlaylist(tPessoa* pessoa, char* nome){
+    for(int i = 0; i < pessoa->numPlaylists; i++){
+        if(strcmp(retornaNomePlaylist(pessoa->playlists[i]), nome) == 0) return pessoa->playlists[i];
+    }
+    return NULL;
+}
+
 tPessoa* inicializaPessoa(char* nome, int numPlaylists, tLista* amigos, tPlaylist** playlists){
     tPessoa* pessoa = malloc(sizeof(tPessoa));
 
@@ -45,11 +52,13 @@ tPlaylist** retornaVetorPlaylists(tPessoa* pessoa){
 void liberaPessoa(tPessoa* pessoa){
     if(pessoa != NULL){
         free(pessoa->nomePessoa);
-        liberaLista(pessoa->amigos);
-        for(int i = 0; i < pessoa->numPlaylists; i++){
-            liberaPlaylist(pessoa->playlists[i]);
+        if(pessoa->amigos != NULL) liberaLista(pessoa->amigos);
+        if(pessoa->numPlaylists > 0){
+           for(int i = 0; i < pessoa->numPlaylists; i++){
+                liberaPlaylist(pessoa->playlists[i]);
+            } 
         }
-        free(pessoa->playlists);
+        if(pessoa->playlists != NULL) free(pessoa->playlists);
         free(pessoa);
     }
 }

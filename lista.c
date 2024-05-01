@@ -56,15 +56,27 @@ void insereMusicaNaPlaylist(tLista* playlist, tMusica* musica){
     playlist->ultimo->prox = NULL;
 }
 
-// void imprimeLista(tLista* lista){
-//     tCelula* aux;
-//     aux = lista->primeiro;
+tPessoa* buscaPessoa(tLista* lista, char* nome){
+    tCelula* aux = lista->primeiro;
 
-//     while(aux != NULL){
-//         printf("Nome: %s, preco: %d e codigo: %d\n", retornaNome(aux->produto), retornaPreco(aux->produto), retornaCodigo(aux->produto));
-//         aux = aux->prox;
-//     }
-// }
+    while(aux != NULL){
+        if(strcmp(retornaNomePessoa(aux->conteudo), nome) == 0) return aux->conteudo;
+        aux = aux->prox;
+    }
+
+    return NULL;
+}
+
+tMusica* buscaMusica(tLista* lista, char* nome){
+    tCelula* aux = lista->primeiro;
+
+    while(aux != NULL){
+        if(strcmp(retornaNomeMusica(aux->conteudo), nome) == 0) return aux->conteudo;
+        aux = aux->prox;
+    }
+
+    return NULL;
+}
 
 void liberaLista(tLista* lista){
     tCelula *cel = lista->primeiro;
