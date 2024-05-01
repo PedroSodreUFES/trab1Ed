@@ -52,7 +52,7 @@ tPlaylist** retornaVetorPlaylists(tPessoa* pessoa){
 void liberaPessoa(tPessoa* pessoa){
     if(pessoa != NULL){
         free(pessoa->nomePessoa);
-        if(pessoa->amigos != NULL) liberaListaPessoas(pessoa->amigos); //QUALQUER COISA TIRA ISSO AQUI
+        liberaListaAmigos(pessoa->amigos);
         if(pessoa->numPlaylists > 0){
            for(int i = 0; i < pessoa->numPlaylists; i++){
                 liberaPlaylist(pessoa->playlists[i]);

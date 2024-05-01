@@ -26,4 +26,6 @@ void liberaListaPessoas(tLista* lista);
 
 void liberaListaMusicas(tLista* lista);
 
+void liberaListaAmigos(tLista* lista);
+
 #endif

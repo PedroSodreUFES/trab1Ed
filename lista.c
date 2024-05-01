@@ -106,3 +106,16 @@ void liberaListaMusicas(tLista* lista){
 
     free(lista);
 }
+
+void liberaListaAmigos(tLista* lista){
+    tCelula *cel = lista->primeiro;
+    tCelula *proxCel;
+
+    while(cel != NULL){
+        proxCel = cel->prox;
+        free(cel);
+        cel = proxCel;
+    }
+
+    free(lista);
+}
