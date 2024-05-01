@@ -8,7 +8,9 @@ typedef struct lista tLista;
 #include "playlist.h"
 #include "pessoa.h"
 
-tCelula* liberaCelula(tCelula* cel);
+tCelula* liberaCelulaPessoa(tCelula* cel);
+
+tCelula* liberaCelulaMusicaMusica(tCelula* cel);
 
 tLista* inicializaLista();
 
@@ -20,6 +22,8 @@ tPessoa* buscaPessoa(tLista* lista, char* nome);
 
 tMusica* buscaMusica(tLista* lista, char* nome);
 
-void liberaLista(tLista* lista);
+void liberaListaPessoas(tLista* lista);
+
+void liberaListaMusicas(tLista* lista);
 
 #endif

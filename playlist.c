@@ -27,7 +27,7 @@ char* retornaNomePlaylist(tPlaylist* playlist){
 
 void liberaPlaylist(tPlaylist* playlist){
     if(playlist != NULL){
-        liberaLista(playlist->musicas);
+        liberaListaMusicas(playlist->musicas);
         free(playlist->nomedaplaylist);
         free(playlist);
     }

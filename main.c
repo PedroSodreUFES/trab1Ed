@@ -24,7 +24,7 @@ int main(){
     printf("inicializei playlists\n");
 
     tLista* amigos = inicializaLista();
-    tPessoa* Pedro = inicializaPessoa("Pedro", 3, amigos, NULL); //Vetor de vetor assim???
+    tPessoa* Pedro = inicializaPessoa("Pedro", 0, amigos, NULL); //Vetor de vetor assim???
     printf("PIMBA\n");
 
     inserePlaylist(Pedro, playlist1);
@@ -34,7 +34,7 @@ int main(){
     inserePessoaNaLista(lista, Pedro);
     printf("insei pessoa na lista\n");
 
-    liberaLista(lista);
+    liberaListaPessoas(lista);
     printf("liberei lista\n");
 
     return 0;

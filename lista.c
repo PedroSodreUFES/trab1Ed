@@ -10,10 +10,19 @@ struct lista{
     tCelula* ultimo;
 };
 
-tCelula* liberaCelula(tCelula* cel){
+tCelula* liberaCelulaPessoa(tCelula* cel){
 
     tCelula* prox = cel->prox;
     liberaPessoa(cel->conteudo);
+    free(cel);
+
+    return prox;
+}
+
+tCelula* liberaCelulaMusica(tCelula* cel){
+
+    tCelula* prox = cel->prox;
+    liberaMusica(cel->conteudo);
     free(cel);
 
     return prox;
@@ -78,11 +87,21 @@ tMusica* buscaMusica(tLista* lista, char* nome){
     return NULL;
 }
 
-void liberaLista(tLista* lista){
+void liberaListaPessoas(tLista* lista){
     tCelula *cel = lista->primeiro;
 
     while(cel != NULL){
-        cel = liberaCelula(cel);
+        cel = liberaCelulaPessoa(cel);
+    }
+
+    free(lista);
+}
+
+void liberaListaMusicas(tLista* lista){
+    tCelula *cel = lista->primeiro;
+
+    while(cel != NULL){
+        cel = liberaCelulaMusica(cel);
     }
 
     free(lista);
