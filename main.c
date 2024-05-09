@@ -1,6 +1,6 @@
 #include "lista.h"
 
-int main(){
+int main(){ //Lista principal (pessoa), lista de playlists e lista de amigos
 
     tLista* lista = inicializaLista();
 
@@ -14,37 +14,47 @@ int main(){
     tLista* play1 = inicializaLista();
     tLista* play2 = inicializaLista();
     tLista* play3 = inicializaLista();
-    insereMusicaNaPlaylist(play1, mus1);
-    insereMusicaNaPlaylist(play1, mus2);
-    insereMusicaNaPlaylist(play2, mus3);
-    insereMusicaNaPlaylist(play2, mus4);
-    insereMusicaNaPlaylist(play3, mus5);
-    insereMusicaNaPlaylist(play3, mus6);
+    insereNaLista(play1, mus1);
+    insereNaLista(play1, mus2);
+    insereNaLista(play2, mus3);
+    insereNaLista(play2, mus4);
+    insereNaLista(play3, mus5);
+    insereNaLista(play3, mus6);
+
+    tPlaylist* playlist1 = inicializaPlaylist(play1, "playlist1");
+    tPlaylist* playlist2 = inicializaPlaylist(play2, "playlist2");
+    tPlaylist* playlist3 = inicializaPlaylist(play3, "playlist3");
+
+    tLista* playlistsPedro = inicializaLista();
+    tLista* playlistsMaria = inicializaLista();
+
+    insereNaLista(playlistsPedro, playlist1);
+    insereNaLista(playlistsPedro, playlist2);
+    insereNaLista(playlistsMaria, playlist3);
     //printf("inseri musicas\n");
-    tPlaylist* playlist1 = inicializaPlaylist(play1, "Playlist1");
-    tPlaylist* playlist2 = inicializaPlaylist(play2, "Playlist2");
-    tPlaylist* playlist3 = inicializaPlaylist(play3, "Playlist3");
-    //printf("inicializei playlists\n");
 
     tLista* amigos1 = inicializaLista();
     tLista* amigos2 = inicializaLista();
 
-    tPessoa* Maria = inicializaPessoa("Maria", 0, amigos2, NULL);
+    tPessoa* Maria = inicializaPessoa("Maria", amigos2, playlistsMaria);
 
-    inserePessoaNaLista(amigos1, Maria);
+    insereNaLista(amigos1, Maria);
 
-    tPessoa* Pedro = inicializaPessoa("Pedro", 0, amigos1, NULL); //Vetor de vetor assim???
-    inserePessoaNaLista(amigos2, Pedro);
-    ///printf("PIMBA\n");
+    tPessoa* Pedro = inicializaPessoa("Pedro", amigos1, playlistsPedro); //Vetor de vetor assim???
+    insereNaLista(amigos2, Pedro);
 
-    inserePlaylist(Pedro, playlist1);
-    inserePlaylist(Pedro, playlist2);
-    inserePlaylist(Maria, playlist3);
     //printf("inseri playlists\n");
 
-    inserePessoaNaLista(lista, Maria);
-    inserePessoaNaLista(lista, Pedro);
-    //printf("insei pessoa na lista\n");
+    insereNaLista(lista, Maria);
+    insereNaLista(lista, Pedro);
+    
+    printf("\nPEDRO:\n\n");
+    imprimePessoa(Pedro);
+    printf("\nMARIA:\n\n");
+    imprimePessoa(Maria);
+    printf("\n");
+
+    //printf("inseri pessoa na lista\n");
 
     liberaListaPessoas(lista);
     //printf("liberei lista\n");

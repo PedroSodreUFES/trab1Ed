@@ -10,6 +10,45 @@ struct lista{
     tCelula* ultimo;
 };
 
+tCelula* retornaPrimeiro(tLista* lista){
+    return lista->primeiro;
+}
+
+void imprimeAmigos(tLista* amigos){
+    tCelula* c = amigos->primeiro;
+    tCelula* aux;
+
+    while(c != NULL){
+        aux = c->prox;
+        printf("Amigos: ");
+        printf("%s\n\n", retornaNomePessoa(c->conteudo));
+        c = aux;
+    }
+}
+
+void imprimePlaylist(tPlaylist* playlist){
+    tCelula* c = retornaPrimeiro(retornaListaMusicas(playlist));
+    tCelula* aux;
+
+    while(c != NULL){
+        aux = c->prox;
+        printf("%s\n", retornaArtista(c->conteudo));
+        printf("%s\n", retornaNomeMusica(c->conteudo));
+        c = aux;
+    }
+}
+
+void imprimePlaylists(tLista* p){
+    tCelula* c = p->primeiro;
+    tCelula* aux;
+
+    while(c != NULL){
+        aux = c->prox;
+        imprimePlaylist(c->conteudo);
+        c = aux;
+    }
+}
+
 tCelula* liberaCelulaPessoa(tCelula* cel){
 
     tCelula* prox = cel->prox;
@@ -28,6 +67,20 @@ tCelula* liberaCelulaMusica(tCelula* cel){
     return prox;
 }
 
+tPlaylist* buscaPlaylist(tPessoa* pessoa, char* nome){
+
+    tCelula* cel = retornaPrimeiro(retornaListaPlaylists(pessoa));
+    tCelula* aux;
+
+    while(cel != NULL){
+        aux = cel->prox;
+        if(strcmp(retornaNomePlaylist(cel->conteudo), nome) == 0) return cel->conteudo;
+        cel = aux;
+    }
+
+    return NULL;
+}
+
 tLista* inicializaLista(){
     tLista* lista = malloc(sizeof(tLista));
 
@@ -37,7 +90,7 @@ tLista* inicializaLista(){
     return lista;
 }
 
-void inserePessoaNaLista(tLista* lista, tPessoa* pessoa){
+void insereNaLista(tLista* lista, void* conteudo){
     tCelula* novo = malloc(sizeof(tCelula));
 
     if(lista->ultimo == NULL){
@@ -47,22 +100,8 @@ void inserePessoaNaLista(tLista* lista, tPessoa* pessoa){
         lista->ultimo = lista->ultimo->prox;
     }
 
-    lista->ultimo->conteudo = pessoa;
+    lista->ultimo->conteudo = conteudo;
     lista->ultimo->prox = NULL;
-}
-
-void insereMusicaNaPlaylist(tLista* playlist, tMusica* musica){
-    tCelula* novo = malloc(sizeof(tCelula));
-
-    if(playlist->ultimo == NULL){
-        playlist->primeiro = playlist->ultimo = novo;
-    } else{
-        playlist->ultimo->prox = novo;
-        playlist->ultimo = playlist->ultimo->prox;
-    }
-
-    playlist->ultimo->conteudo = musica;
-    playlist->ultimo->prox = NULL;
 }
 
 tPessoa* buscaPessoa(tLista* lista, char* nome){
@@ -105,6 +144,20 @@ void liberaListaMusicas(tLista* lista){
     }
 
     free(lista);
+}
+
+void liberaListaPlaylists(tLista* playlists){
+    tCelula *cel = playlists->primeiro;
+    tCelula* aux;
+
+    while(cel != NULL){
+        aux = cel->prox;
+        liberaPlaylist(cel->conteudo);
+        free(cel);
+        cel = aux;
+    }
+
+    free(playlists);
 }
 
 void liberaListaAmigos(tLista* lista){

@@ -5,19 +5,15 @@ typedef struct pessoa tPessoa;
 
 #include "lista.h"
 
-void inserePlaylist(tPessoa* pessoa, tPlaylist* playlist);
+void imprimePessoa(tPessoa* pessoa);
 
-tPlaylist* buscaPlaylist(tPessoa* pessoa, char* nome);
-
-tPessoa* inicializaPessoa(char* nome, int numPlaylists, tLista* amigos, tPlaylist** playlists);
+tPessoa* inicializaPessoa(char* nome, tLista* amigos, tLista* playlists);
 
 char* retornaNomePessoa(tPessoa* pessoa);
 
-int retornaNumPlaylists(tPessoa* pessoa);
-
 tLista* retornaListaAmigos(tPessoa* pessoa);
 
-tPlaylist** retornaVetorPlaylists(tPessoa* pessoa);
+tLista* retornaListaPlaylists(tPessoa* pessoa);
 
 void liberaPessoa(tPessoa* pessoa);
 
