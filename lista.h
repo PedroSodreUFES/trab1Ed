@@ -38,4 +38,10 @@ void liberaListaPlaylists(tLista* lista);
 
 void liberaListaAmigos(tLista* lista);
 
+void imprimePessoaComSeusAmigos(tLista *listadepessoas);
+
+tLista *inicializaAsPessoasNoApp();
+
+void inicializaPlaylistsDasPessoas(tLista *pessoas);
+
 #endif

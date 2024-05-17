@@ -32,3 +32,8 @@ void liberaPlaylist(tPlaylist* playlist){
         free(playlist);
     }
 }
+
+void atribuiListaDeMusicasNaPLaylist(tPlaylist *playlist, tLista *musicas)
+{
+    playlist->musicas = musicas;
+}

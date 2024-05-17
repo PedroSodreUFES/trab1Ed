@@ -17,4 +17,8 @@ tLista* retornaListaPlaylists(tPessoa* pessoa);
 
 void liberaPessoa(tPessoa* pessoa);
 
+void atribuiListaDeAmigos(tLista *lista_de_amigos, tPessoa *p);
+
+void atribuiListaDePlaylists(tLista *lista_de_playlists, tPessoa *p);
+
 #endif

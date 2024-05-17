@@ -38,8 +38,21 @@ tLista* retornaListaPlaylists(tPessoa* pessoa){
 void liberaPessoa(tPessoa* pessoa){
     if(pessoa != NULL){
         free(pessoa->nomePessoa);
-        liberaListaAmigos(pessoa->amigos);
-        liberaListaPlaylists(pessoa->playlists);
+        liberaListaAmigos(pessoa->amigos);//libera a lista sem liberar os amigos
+        if(pessoa->playlists!=NULL)// a pessoa pode nao ter nenhuma musica
+        {
+            liberaListaPlaylists(pessoa->playlists);
+        }
         free(pessoa);
     }
+}
+
+void atribuiListaDeAmigos(tLista *lista_de_amigos, tPessoa *p)
+{
+    p->amigos = lista_de_amigos;
+}
+
+void atribuiListaDePlaylists(tLista *lista_de_playlists, tPessoa *p)
+{
+    p->playlists = lista_de_playlists;
 }
