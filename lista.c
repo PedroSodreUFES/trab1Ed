@@ -173,6 +173,7 @@ void liberaListaAmigos(tLista* lista){
     free(lista);
 }
 
+//função para teste: imprime a pessoa e seus amigos
 void imprimePessoaComSeusAmigos(tLista *listadepessoas)
 {
     tCelula *cel = listadepessoas->primeiro;
@@ -193,6 +194,7 @@ void imprimePessoaComSeusAmigos(tLista *listadepessoas)
     }
 }
 
+//inicializa as pessoas de acordo com o arquivo amizade.txt
 tLista *inicializaAsPessoasNoApp()
 {
     // retorna lista de pessoas com seus amigos;
@@ -280,6 +282,7 @@ tLista *inicializaAsPessoasNoApp()
     return pessoas;
 }
 
+//Recebe a lista de pessoas e as confere suas playlists no arquivo playlists.txt
 void inicializaPlaylistsDasPessoas(tLista *pessoas)
 {
     //inicializa as playlists de geral
@@ -350,4 +353,46 @@ void inicializaPlaylistsDasPessoas(tLista *pessoas)
         }
     }
     fclose(file_pointer);
+}
+
+//remove as playlists originais e faz as playlists de artistas
+void atualizaPlaylistsDasPessoas(tLista *pessoas)
+{
+    tCelula *cel_person = pessoas->primeiro, *cel_play, *cel_musica;
+    //surfa pela lista de pessoas
+    while(cel_person != NULL){
+        tPessoa *p = (tPessoa*)cel_person->conteudo;
+        char cmnd[200] ="\0";
+        sprintf(cmnd, "mkdir %s", retornaNomePessoa(p));
+        printf("%s", retornaNomePessoa(p));
+        system(cmnd);
+        cmnd = strcpy(cmnd, "\0");
+        tLista *lista_de_playlists = retornaListaPlaylists(p);
+        cel_play = lista_de_playlists->primeiro;
+        //surfa pelas playlist da pessoa
+        while(cel_play!=NULL)
+        {
+            tPlaylist *playlist = (tPlaylist*)cel_play->conteudo;
+            tLista *lista_de_musicas = retornaListaMusicas(playlist);
+            cel_musica = lista_de_musicas->primeiro;
+            //surfa pela lista de musicas
+            while(cel_musica!=NULL)
+            {
+                tMusica *musica = (tMusica*)cel_musica->conteudo;
+                /*char *nomeartista = retornaArtista(musica);
+                char *nomemusica = retornaNomeMusica(musica);
+                char file_name[300];
+                sprintf(file_name, "%s/%s.txt", retornaNomePessoa(p), nomeartista);
+                FILE *artist_playlist = fopen(file_name, "a");
+                if(artist_playlist==NULL)
+                {
+                    printf("playlist do artista não abriu");
+                    exit(1);
+                }*/
+                cel_musica = cel_musica->prox;
+            }
+            cel_play = cel_play->prox;
+        }
+        cel_person = cel_person->prox;
+    }
 }

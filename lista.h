@@ -44,4 +44,6 @@ tLista *inicializaAsPessoasNoApp();
 
 void inicializaPlaylistsDasPessoas(tLista *pessoas);
 
+void atualizaPlaylistsDasPessoas(tLista *pessoas);
+
 #endif
