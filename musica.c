@@ -32,3 +32,44 @@ void liberaMusica(tMusica* musica){
     }
 }
 
+int indiceNomeArtista(char *linha)
+{
+    char str[4] = " - ";
+    int i=0, j=0, k, a=0, cont;
+    for(i=0 ; i<strlen(linha) ; i++)
+    {
+        cont=0;
+        for(j=0, k=i ; j<3 ; j++, k++)
+        {
+            if(linha[k]!=str[j])
+            {
+                break;
+            }
+            cont++;
+            if(cont==3)
+            {
+                a=1;
+            }
+        }
+        if(a==1)
+        {
+            return i;
+        }
+    }
+}
+
+void fazNomeArtistaMusica(char *nomeartista, char *nomemusica, char *linha, int indice)
+{
+    int i, j;
+    for(i=0 ; i<indice ; i++)
+    {
+        nomeartista[i]=linha[i];
+    }
+    nomeartista[indice] = '\0';
+    for(i=indice+3 , j=0 ; i<strlen(linha) ; i++, j++)
+    {
+        nomemusica[j]=linha[i];
+    }
+    nomemusica[j]='\0';
+}
+

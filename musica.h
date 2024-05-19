@@ -15,4 +15,8 @@ char* retornaArtista(tMusica* musica);
 
 void liberaMusica(tMusica* musica);
 
+int indiceNomeArtista(char *linha);
+
+void fazNomeArtistaMusica(char *nomeartista, char *nomemusica, char *linha, int indice);
+
 #endif

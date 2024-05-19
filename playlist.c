@@ -37,3 +37,7 @@ void atribuiListaDeMusicasNaPLaylist(tPlaylist *playlist, tLista *musicas)
 {
     playlist->musicas = musicas;
 }
+
+
+
+

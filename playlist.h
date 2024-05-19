@@ -15,4 +15,5 @@ void liberaPlaylist(tPlaylist* playlist);
 
 void atribuiListaDeMusicasNaPLaylist(tPlaylist *playlist, tLista *musicas);
 
+
 #endif
