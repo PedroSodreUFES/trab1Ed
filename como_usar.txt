@@ -1,0 +1,5 @@
+digite "make" sem aspas para compilar o programa.
+
+digite "make run_facil" sem aspas para rodar o programa no caso facil.
+
+digite "make run_dificil" sem aspas para rodar o programa no caso dificil.

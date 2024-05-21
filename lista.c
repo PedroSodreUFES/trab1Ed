@@ -191,7 +191,6 @@ void liberaListaAmigos(tLista* lista){
 void imprimePessoaComSeusAmigos(tLista *listadepessoas)
 {
     tCelula *cel = listadepessoas->primeiro;
-    tCelula *proxCel;
 
     while(cel != NULL){
         tPessoa *p = (tPessoa*)cel->conteudo;
@@ -317,7 +316,7 @@ void inicializaPlaylistsDasPessoas(tLista *pessoas)
         exit(1);
     }
     //le o nome de cada um e suas playlists
-    char nome[100], nomeplaylist[100], c;
+    char nome[100], nomeplaylist[100];
     int nplaylists, i;
     while(fscanf(file_pointer, "%[^;];%d;", nome, &nplaylists)==2)
     {
@@ -411,7 +410,6 @@ void atualizaPlaylistsDasPessoas(tLista *pessoas)
                 tMusica *musica = (tMusica*)cel_musica->conteudo;
                 //recebe os dados do artista
                 char *nomeartista = retornaArtista(musica);
-                char *nomemusica = retornaNomeMusica(musica);
                 //faz caminho da playlist.txt e cria as novas playlists
                 char file_name[300], nome_artista_p[100];
                 sprintf(nome_artista_p, "%s.txt", nomeartista);
@@ -557,7 +555,7 @@ void geraPlayedRefatorada(tLista *pessoas)
         printf("a playlist %s não abriu\n", file_path);
         exit(1);
     }
-    tCelula *cel_person = pessoas->primeiro, *cel_play, *cel_musica;
+    tCelula *cel_person = pessoas->primeiro, *cel_play;
     //surfa pela lista de pessoas
     while(cel_person != NULL)
     {

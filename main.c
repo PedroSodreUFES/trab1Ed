@@ -1,6 +1,6 @@
 #include "lista.h"
 
-int main(int agrc, char **argv)
+int main()
 {
     //inicializa as pessoas e seus amigos
     tLista *pessoas = inicializaAsPessoasNoApp();

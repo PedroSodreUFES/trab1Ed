@@ -36,7 +36,7 @@ int indiceNomeArtista(char *linha)
 {
     char str[4] = " - ";
     int i=0, j=0, k, a=0, cont;
-    for(i=0 ; i<strlen(linha) ; i++)
+    for(i=0 ; i<(int)strlen(linha) ; i++)
     {
         cont=0;
         for(j=0, k=i ; j<3 ; j++, k++)
@@ -56,6 +56,7 @@ int indiceNomeArtista(char *linha)
             return i;
         }
     }
+    return k;
 }
 
 void fazNomeArtistaMusica(char *nomeartista, char *nomemusica, char *linha, int indice)
@@ -66,7 +67,7 @@ void fazNomeArtistaMusica(char *nomeartista, char *nomemusica, char *linha, int 
         nomeartista[i]=linha[i];
     }
     nomeartista[indice] = '\0';
-    for(i=indice+3 , j=0 ; i<strlen(linha) ; i++, j++)
+    for(i=indice+3 , j=0 ; i<(int)strlen(linha) ; i++, j++)
     {
         nomemusica[j]=linha[i];
     }
