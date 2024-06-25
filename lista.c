@@ -340,7 +340,7 @@ void inicializaPlaylistsDasPessoas(tLista *pessoas)
         //se a pessoa nao tiver uma playlist
         if(l==NULL)
         {
-            l = inicializaLista(l);
+            l = inicializaLista();
             atribuiListaDePlaylists(l, p);
         }
         //ler as playlists
