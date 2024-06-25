@@ -187,7 +187,7 @@ void liberaListaAmigos(tLista* lista){
     free(lista);
 }
 
-//função para teste: imprime a pessoa e seus amigos
+//funcao para teste: imprime a pessoa e seus amigos
 void imprimePessoaComSeusAmigos(tLista *listadepessoas)
 {
     tCelula *cel = listadepessoas->primeiro;
@@ -201,7 +201,7 @@ void imprimePessoaComSeusAmigos(tLista *listadepessoas)
         }
         else
         {
-            printf("A pessoa indicada não tem amigos\n");
+            printf("A pessoa indicada nao tem amigos\n");
         }
         cel = cel->prox;
     }
@@ -220,7 +220,7 @@ tLista *inicializaAsPessoasNoApp()
     {
         printf("Arquivo "
                "amizade.txt"
-               " não foi aberto corretamente\n");
+               " nao foi aberto corretamente\n");
         exit(1);
     }
     char n, nome[100];
@@ -245,22 +245,22 @@ tLista *inicializaAsPessoasNoApp()
         // caso sejam pessoas iguais
         if (p == p2)
         {
-            printf("As pessoas buscadas são iguais e não foram registradas como amigas\n");
+            printf("As pessoas buscadas sao iguais e nao foram registradas como amigas\n");
         }
         // caso a primeira pessoa nao seja encontrada
         else if (p == NULL)
         {
-            printf("A primeira pessoa buscada não foi encontrada\n");
+            printf("A primeira pessoa buscada nao foi encontrada\n");
         }
         // caso a segunda pessoa nao seja encontrada
         else if (p2 == NULL)
         {
-            printf("A segunda pessoa buscada não foi encontrada\n");
+            printf("A segunda pessoa buscada nao foi encontrada\n");
         }
         // caso de registro como amigos
         else
         {
-            // se a pessoa 1 não tiver amigos ainda
+            // se a pessoa 1 nao tiver amigos ainda
             if(retornaListaAmigos(p) == NULL)
             {
                 tLista *l = inicializaLista();
@@ -282,7 +282,7 @@ tLista *inicializaAsPessoasNoApp()
             //checagem para ver se as pessoas ja estao incluidas na lista de amigos ou nao
             if(buscaPessoa(friend_list_p1, nome2) != NULL)
             {
-                printf("%s ja está inserida(o) na lista de %s\n", nome2, nome);
+                printf("%s ja esta inserida(o) na lista de %s\n", nome2, nome);
             }
             else
             {
@@ -292,7 +292,7 @@ tLista *inicializaAsPessoasNoApp()
             //mesmo processo para a pessoa 2
             if(buscaPessoa(friend_list_p2, nome) != NULL)
             {
-                printf("%s ja está inserida(o) na lista de %s\n", nome, nome2);
+                printf("%s ja esta inserida(o) na lista de %s\n", nome, nome2);
             }
             else
             {
@@ -312,7 +312,7 @@ void inicializaPlaylistsDasPessoas(tLista *pessoas)
     file_pointer = fopen("./Entrada/playlists.txt", "r");
     if(file_pointer==NULL)
     {
-        printf("arquivo de playlists não existe\n");
+        printf("arquivo de playlists nao existe\n");
         exit(1);
     }
     //le o nome de cada um e suas playlists
@@ -321,17 +321,17 @@ void inicializaPlaylistsDasPessoas(tLista *pessoas)
     while(fscanf(file_pointer, "%[^;];%d;", nome, &nplaylists)==2)
     {
         tPessoa *p = buscaPessoa(pessoas, nome);
-        //se a pessoa não existe
+        //se a pessoa nao existe
         if(p==NULL)
         {
-            printf("Pessoa não existe na lista\n");
+            printf("Pessoa nao existe na lista\n");
             fscanf(file_pointer, "%*[^\n]%*c");
             continue;
         }
         //se for pedido para ler 0 playlists
         if(nplaylists==0)
         {
-            printf("não é possivel registrar 0 playlists para %s", nome);
+            printf("nao eh possivel registrar 0 playlists para %s", nome);
             fscanf(file_pointer, "%*[^\n]%*c");
             continue;
         }
@@ -356,7 +356,7 @@ void inicializaPlaylistsDasPessoas(tLista *pessoas)
             playlist_file = fopen(str, "r");
             if(playlist_file==NULL)
             {
-                printf("A playlist %s não existe\n", nomeplaylist);
+                printf("A playlist %s nao existe\n", nomeplaylist);
                 exit(1);
             }
             //faz a lista de musicas da playlist
@@ -425,7 +425,7 @@ void atualizaPlaylistsDasPessoas(tLista *pessoas)
                 FILE *artist_playlist = fopen(file_name, "a");
                 if(artist_playlist==NULL)
                 {
-                    printf("playlist do artista não abriu");
+                    printf("playlist do artista nao abriu");
                     exit(1);
                 }
                 fprintf(artist_playlist, "%s - %s\n", retornaArtista(musica), retornaNomeMusica(musica));
@@ -476,7 +476,7 @@ void geraNovasPlaylistsDeArtistas(tLista *pessoas)
             playlist_file = fopen(file_path, "r");
             if(playlist_file==NULL)
             {
-                printf("a playlist %s não abriu\n", file_path);
+                printf("a playlist %s nao abriu\n", file_path);
                 exit(1);
             }
             //surfa pela lista de musicas
@@ -523,7 +523,7 @@ void geraArquivosPlaylists(tLista *pessoas)
             playlist_file = fopen(file_path, "w");
             if(playlist_file==NULL)
             {
-                printf("a playlist %s não abriu\n", file_path);
+                printf("a playlist %s nao abriu\n", file_path);
                 exit(1);
             }
             //surfa pela lista de musicas
@@ -552,7 +552,7 @@ void geraPlayedRefatorada(tLista *pessoas)
     fatorada_txt = fopen(file_path, "w");
     if(fatorada_txt==NULL)
     {
-        printf("a playlist %s não abriu\n", file_path);
+        printf("a playlist %s nao abriu\n", file_path);
         exit(1);
     }
     tCelula *cel_person = pessoas->primeiro, *cel_play;
@@ -598,7 +598,7 @@ void geraSimilaridades(tLista *pessoas)
     similaridades_txt = fopen(file_path, "w");
     if(similaridades_txt==NULL)
     {
-        printf("a playlist %s não abriu\n", file_path);
+        printf("a playlist %s nao abriu\n", file_path);
         exit(1);
     }
     tCelula *cel_person = pessoas->primeiro, *cel_play, *cel_musica, *cel_amigo;
@@ -647,8 +647,8 @@ void geraSimilaridades(tLista *pessoas)
             //printa as similaridades com o amigo
             fprintf(similaridades_txt, "%s;%s;%d\n", retornaNomePessoa(p), retornaNomePessoa(friend), cont);
             
-            //Seta NULL a pessoa na lista de amigos do amigo para que não haja repetições
-            evitaRepetiçãoDeAmigos(p, retornaListaAmigos(friend));
+            //Seta NULL a pessoa na lista de amigos do amigo para que nao haja repeticoes
+            evitaRepeticaoDeAmigos(p, retornaListaAmigos(friend));
             
             cel_amigo = cel_amigo->prox;
         }
@@ -658,7 +658,7 @@ void geraSimilaridades(tLista *pessoas)
 }
 
 
-//diz se uma musica de alguem está na playlist de seu amigo
+//diz se uma musica de alguem esta na playlist de seu amigo
 int musicaNasPlaylistsDosAmigos(char *nomemusica, char *nomeartista, tLista *playlists)
 {
     tCelula *cel_playlist, *cel_musica;
@@ -690,8 +690,8 @@ int musicaNasPlaylistsDosAmigos(char *nomemusica, char *nomeartista, tLista *pla
 }
 
 
-//evita repetições em similaridades.txt
-void evitaRepetiçãoDeAmigos(tPessoa *p, tLista *lista_de_amigos)
+//evita repeticoes em similaridades.txt
+void evitaRepeticaoDeAmigos(tPessoa *p, tLista *lista_de_amigos)
 {
     tCelula *cel_amigo= retornaPrimeiro(lista_de_amigos);
     while(cel_amigo != NULL)

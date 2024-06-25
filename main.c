@@ -13,7 +13,7 @@ int main()
     //retira as playlists originais
     atualizaPlaylistsDasPessoas(pessoas);
 
-    //gera listas de playlists por artistas com musicas não repetidas
+    //gera listas de playlists por artistas com musicas nao repetidas
     geraNovasPlaylistsDeArtistas(pessoas);
 
     //gera os arquivos txt das playlists por artista

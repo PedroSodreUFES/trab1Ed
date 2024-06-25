@@ -14,7 +14,7 @@ tCelula* retornaPrimeiro(tLista* lista);
 //retorna prox celula
 tCelula* retornaProx(tCelula *celula);
 
-//função teste para imprimir amigos da pessoa
+//funcao teste para imprimir amigos da pessoa
 void imprimeAmigos(tLista* amigos);
 
 //imprime a playlist
@@ -35,7 +35,7 @@ tLista* inicializaLista();
 //Conta celulas na lista
 int contaCelulas(tLista *l);
 
-//inserção em uma lista generica
+//insercao em uma lista generica
 void insereNaLista(tLista* lista, void* conteudo);
 
 //busca pessoa por nome. Caso nao encontrada, retorna NULL
@@ -59,20 +59,20 @@ void liberaListaAmigos(tLista* lista);
 //funcao teste para imprimir as pessoas e seus amigos
 void imprimePessoaComSeusAmigos(tLista *listadepessoas);
 
-//verifica se a musica está presente nas playlists de um amigo
+//verifica se a musica esta presente nas playlists de um amigo
 int musicaNasPlaylistsDosAmigos(char *nomemusica, char *nomeartista, tLista *playlists);
 
 /*
-evita a repetição de linhas em similaridades.txt
+evita a repeticao de linhas em similaridades.txt
 obs: p eh a pessoa e lista_de_amigos eh a lista_de_amigos de um amigo de p.
-no caso, o objetivo eh tornar nula a presença de p na lista de amigos do seu amigo
+no caso, o objetivo eh tornar nula a presenca de p na lista de amigos do seu amigo
 e evitar casos como:
 Pedro;Lucas;10
 Lucas;Pedro;10
 */
-void evitaRepetiçãoDeAmigos(tPessoa *p, tLista *lista_de_amigos);
+void evitaRepeticaoDeAmigos(tPessoa *p, tLista *lista_de_amigos);
 
-// todas as funções abaixo sao descritas na main
+// todas as funcoes abaixo sao descritas na main
 tLista *inicializaAsPessoasNoApp();
 
 void inicializaPlaylistsDasPessoas(tLista *pessoas);
